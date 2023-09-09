@@ -28,5 +28,7 @@ curl --location 'http://localhost:8086/payment/' \
 }'
 ```
 so, go to the kafka ui, in your topic and see the message on messages tab
-##
+## See the message
+You can see your message details on kafka by clicking on row, like the image bellow
+![kafka UI](./img/kafka-ui.png)
 🎉Congratulations you just sent your first message to an Kafka Topic!🎉
