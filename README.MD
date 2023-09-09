@@ -12,6 +12,7 @@ the kafka-ui interface, then configure your cluster to run on
 server called kafka and on port 9092 and click on validate
 this you show a success message, then save the configurations
 and create a new topic with default configs called `payments`
+and another topic called `application-logs`
 
 ## Running
 
