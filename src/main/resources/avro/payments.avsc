@@ -1,0 +1,40 @@
+{
+    "namespace": "payments.avro",
+    "type": "record",
+    "name": "Payment",
+	"fields": [
+		{
+			"name": "paymentID",
+			"type": "string"
+		},
+		{
+			"name": "sender",
+			"type": "string"
+		},
+        {
+            "name": "receiver",
+            "type": "string"
+        },
+        {
+            "name": "paymentMethod",
+            "type": "string"
+        },
+        {
+            "name": "amount",
+            "type": "long"
+        },
+		{
+			"name": "description",
+			"type": [
+				"null",
+				"string"
+			],
+			"default": null
+		},
+		{
+          "name": "createdAt",
+          "type": ["null", {"type": "int", "logicalType": "timestamp-millis"}],
+          "default": null
+        }
+	]
+}

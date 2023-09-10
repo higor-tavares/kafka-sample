@@ -19,11 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class PaymentController {
   private final PaymentKafkaProducer producer;
   private final LogProducer logs;
-  private final ObjectMapper objectMapper;
   @PostMapping("/")
   public ResponseEntity<PaymentRequest> pay(@RequestBody PaymentRequest paymentRequest) throws JsonProcessingException {
     logs.sendMessage(UUID.randomUUID().toString(), String.format("New payments order ID [%s]. amount [%d]...", paymentRequest.getPaymentID(), paymentRequest.getAmount()));
-    producer.sendMessage(paymentRequest.getPaymentID(), objectMapper.writeValueAsString(paymentRequest));
+    producer.sendMessage(paymentRequest.getPaymentID(), paymentRequest);
     logs.sendMessage(UUID.randomUUID().toString(), String.format("Payments order received with success [%s]...", paymentRequest.getPaymentID()));
     return ResponseEntity.ok(paymentRequest);
   }

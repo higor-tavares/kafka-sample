@@ -41,6 +41,27 @@
 			<artifactId>spring-kafka-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.confluent/kafka-avro-serializer -->
+		<dependency>
+			<groupId>io.confluent</groupId>
+			<artifactId>kafka-avro-serializer</artifactId>
+			<version>5.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro-compiler</artifactId>
+			<version>1.8.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro-maven-plugin</artifactId>
+			<version>1.8.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro</artifactId>
+			<version>1.11.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -57,7 +78,27 @@
 					</excludes>
 				</configuration>
 			</plugin>
-		</plugins>
+		<plugin>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro-maven-plugin</artifactId>
+			<version>1.8.2</version>
+			<executions>
+				<execution>
+					<id>schemas</id>
+					<phase>generate-sources</phase>
+					<goals>
+						<goal>schema</goal>
+						<goal>protocol</goal>
+						<goal>idl-protocol</goal>
+					</goals>
+					<configuration>
+						<sourceDirectory>${project.basedir}/src/main/resources/</sourceDirectory>
+						<outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
 	</build>
 
 </project>
